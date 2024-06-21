@@ -12,30 +12,35 @@ int main()
     printf("Ingrese la cantidad de vocales: ");
     scanf("%d", &n);
 
-    /*
-     Cuando se utiliza scanf para leer un carácter, puede haber un problema con el carácter de nueva línea residual en el búfer de entrada. Esto ocurre porque después de ingresar un número entero en la línea anterior, se presiona Enter, lo que deja un carácter de nueva línea en el búfer de entrada.
-     */
-
     // Limpiar el búfer de entrada
     while (getchar() != '\n');
+        
 
-    for(int i = 0; i < n;i++)
+    for (int i = 0; i < n; i++)
     {
         printf("\nIngrese la letra: ");
-        scanf("%c", &let);
+        scanf(" %c", &let); // Agregar un espacio antes de %c para ignorar el carácter de nueva línea
 
-        if(isalpha(let))
+        if (isalpha(let))
         {
-            if(let == 'a'|| let == 'e' || let == 'i' || let == 'o' || let == 'u')
+            if (let == 'a' || let == 'e' || let == 'i' || let == 'o' || let == 'u')
             {
                 printf("\nEs una vocal");
                 cont++;
-            }else{
+            } else
+            {
                 printf("\nEs una consonante");
                 contCo++;
             }
-        }else
-            printf("Caracter invalido, le quedan i %d ingresos",i);
-
+        } else
+        {
+            printf("No es una letra");
+        }
+        
     }
+
+    printf("\nCantidad de vocales: %d", cont);
+    printf("\nCantidad de consonantes: %d", contCo);
+    return 0;
 }
+
